@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "H3M/XwM7ljzYwdna18zszbg3yWZO9YUTZTCZxahS7UU=",
+  "Source": "Endpoint-AllForOne",
+  "BasePath": "_content/Endpoint-AllForOne",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
