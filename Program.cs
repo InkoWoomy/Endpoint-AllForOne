@@ -34,6 +34,27 @@ builder.Services.AddScoped<IMini9BService, Mini9BService>();
 builder.Services.AddScoped<IMini9CService, Mini9CService>();
 builder.Services.AddScoped<IMini10Service, Mini10Service>();
 
+//Configuring CORS Policy for unrestricted access
+//This piece of code swill allow any reequest from any domain to access our endpoint "Example.com"
+builder.Services.AddCors(options => {
+    options.AddPolicy("AllowAll", policy => {
+        policy.AllowAnyOrigin()     //Allows requests from any origin
+              .AllowAnyMethod()     //Allows any HTTP request (Get, Post, Put, etc)
+              .AllowAnyHeader();    //Allows any headers
+    });
+});
+
+//Configuring Cors to be more restricted access
+builder.Services.AddCors(options => {
+    options.AddPolicy("AllowSome",
+    policy => {
+        policy.WithOrigins("http://localhost:3000")
+        .AllowAnyMethod()
+        .AllowAnyHeader();
+    });
+});
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -44,6 +65,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors("AllowAll");
 
 app.UseAuthorization();
 
